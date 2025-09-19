@@ -1,0 +1,6 @@
+- name: Install and configure PowerDNS
+  hosts:  pdns
+  become: true
+  roles:
+    - pdns
+    - pdns_sync

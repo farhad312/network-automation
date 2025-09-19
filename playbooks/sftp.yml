@@ -1,0 +1,6 @@
+---
+- name: Deploy SFTP server
+  hosts: sftp
+  become: yes
+  roles:
+    - sftp_server

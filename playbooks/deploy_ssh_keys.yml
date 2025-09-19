@@ -1,0 +1,9 @@
+- name: Deploy Ansible SSH key for server-to-server backup
+  hosts: backup_targets
+  become: false
+  tasks:
+    - name: Add Ansible public key to authorized_keys on all servers
+      authorized_key:
+        user: ubuntu
+        state: present
+        key: "{{ lookup('file', '/home/farhad/.ssh/id_ed25519.pub') }}"

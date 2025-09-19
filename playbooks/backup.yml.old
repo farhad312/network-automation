@@ -1,0 +1,22 @@
+- name: Backup important files
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Ensure backup directory exists
+      file:
+        path: /home/ubuntu/backups
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+        mode: '0755'
+
+    - name: Backup /etc/nginx
+      archive:
+        path: /etc/nginx
+        dest: /home/ubuntu/backups/nginx_{{ inventory_hostname }}.tar.gz
+
+    - name: Backup /etc/bind
+      archive:
+        path: /etc/bind
+        dest: /home/ubuntu/backups/bind_{{ inventory_hostname }}.tar.gz

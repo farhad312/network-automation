@@ -1,0 +1,15 @@
+---
+- name: Copy ping script to host
+  copy:
+    src: ping_hosts.py
+    dest: /tmp/ping_hosts.py
+    mode: '0755'
+
+- name: Run ping script
+  command: python3 /tmp/ping_hosts.py
+  register: ping_result
+
+- name: Show ping results
+  debug:
+    var: ping_result.stdout_lines
+

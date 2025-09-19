@@ -1,0 +1,15 @@
+- name: Check server status
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Check Nginx service
+      ansible.builtin.service_facts:
+
+    - name: Get system uptime
+      ansible.builtin.shell: uptime
+      register: uptime_result
+
+    - name: Show uptime
+      debug:
+        var: uptime_result.stdout

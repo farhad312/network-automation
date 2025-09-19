@@ -1,0 +1,4 @@
+  - name: Restart PDNS
+    ansible.builtin.service:
+      name: pdns
+      state: restarted

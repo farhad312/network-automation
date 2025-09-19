@@ -1,0 +1,14 @@
+- name: Copy SSH keys to server04
+  authorized_key:
+    user: ubuntu
+    state: present
+    key: "{{ lookup('file', item) }}"
+  loop:
+    - "id_rsa.pub_server01"
+    - "id_rsa.pub_server02"
+    - "id_rsa.pub_server03"
+    - "id_rsa.pub_server04"
+    - "id_rsa.pub_server05"
+    - "id_rsa.pub_server06"
+    - "id_rsa.pub_server07"
+

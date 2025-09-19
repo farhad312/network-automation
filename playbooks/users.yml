@@ -1,0 +1,5 @@
+- name: Manage users from CSV
+  hosts: server
+  become: true
+  roles:
+    - users

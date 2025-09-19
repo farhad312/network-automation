@@ -1,0 +1,4 @@
+username,group,ssh_key
+alice,dev,ssh-rsa AAAAB3Nza... alice@example
+bob,ops,ssh-rsa AAAAB3Nza... bob@example
+charlie,dev,ssh-rsa AAAAB3Nza... charlie@example

@@ -1,0 +1,3 @@
+backup_server: 192.168.78.174
+backup_user: ubuntu
+ssh_key: /home/ubuntu/.ssh/id_rsa

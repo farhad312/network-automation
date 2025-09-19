@@ -1,0 +1,25 @@
+- name: Install PowerDNS and BIND backend
+  ansible.builtin.apt:
+    name:
+      - pdns-server
+      - pdns-backend-bind
+      - bind9
+    state: present
+    update_cache: yes
+
+- name: Copy BIND config for PDNS
+  ansible.builtin.copy:
+    src: named.conf
+    dest: /etc/powerdns/named.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart PDNS
+
+- name: Ensure PDNS service is running
+  ansible.builtin.service:
+    name: pdns
+    state: started
+    enabled: true
+
+

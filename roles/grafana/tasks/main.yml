@@ -1,0 +1,14 @@
+---
+- name: Install Grafana
+  become: yes
+  ansible.builtin.apt:
+    name: grafana
+    state: present
+    update_cache: yes
+
+- name: Ensure Grafana service is started
+  ansible.builtin.service:
+    name: grafana-server
+    state: started
+    enabled: yes
+

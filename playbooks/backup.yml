@@ -1,0 +1,12 @@
+- name: Backup files to SFTP server
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Rsync data to backup server
+      ansible.builtin.command: >
+        rsync -az --delete
+        -e "ssh -i {{ ssh_key }} -o StrictHostKeyChecking=no"
+        {{ backup_source }}
+        {{ backup_user }}@{{ backup_server }}:/backup/{{ inventory_hostname }}/
+      become: true
+      become_user: root
